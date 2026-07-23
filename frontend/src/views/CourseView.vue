@@ -2,8 +2,10 @@
 import { ref, onMounted, computed, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { marked } from 'marked'
+import markedKatex from 'marked-katex-extension'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github-dark.css'
+import 'katex/dist/katex.min.css'
 import '../styles/course.css'
 
 // --- SEO ---
@@ -41,6 +43,12 @@ renderer.code = function({ text, lang }) {
   return `<pre><code class="hljs language-${validLang}">${highlighted}</code></pre>`
 }
 marked.use({ renderer })
+
+// KaTeX : rendu des formules LaTeX $inline$ et $$bloc$$
+marked.use(markedKatex({
+  throwOnError: false,
+  output: 'html'
+}))
 
 // Fetch single course content
 const fetchCourseContent = async (slug) => {
