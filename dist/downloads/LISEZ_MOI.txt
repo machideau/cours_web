@@ -1,9 +1,0 @@
----
-title: "hdbeuhhdbeu"
-description: "Description..."
-resources:
-  - title: "Télécharger l'exercice (ZIP)"
-    url: "/downloads/mon-exercice.zip"
-  - title: "Support de présentation (PDF)"
-    url: "/downloads/cours.pdf"
----

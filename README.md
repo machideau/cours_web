@@ -20,11 +20,11 @@ Le projet est divisé en trois dossiers principaux :
 
 *   `/frontend` : L'application web cliente (Vue.js 3, Vue Router, Vite, Marked, Highlight.js).
 *   `/backend` : L'API serveur (Node.js, Express) qui lit et distribue les fichiers Markdown.
-*   `/courses` : Le dossier contenant tous vos cours au format `.md`.
+*   `/backend/courses` : Le dossier contenant tous vos cours au format `.md`.
 
 ## Comment écrire un cours ?
 
-Pour ajouter un nouveau cours, il suffit de créer un fichier `.md` dans le dossier `/courses/`. 
+Pour ajouter un nouveau cours, il suffit de créer un fichier `.md` dans le dossier `backend/courses/`. 
 Le fichier doit commencer par un **Front-matter** (bloc YAML) contenant les métadonnées du cours.
 
 **Exemple de structure d'un fichier cours (`mon-nouveau-cours.md`) :**

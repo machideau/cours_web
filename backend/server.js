@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-const COURSES_DIR = path.join(__dirname, '../courses');
+const COURSES_DIR = path.join(__dirname, 'courses');
 
 // Helper to check if courses directory exists
 if (!fs.existsSync(COURSES_DIR)) {
