@@ -4,9 +4,12 @@ title: "Les Bases de JavaScript"
 description: "Découvrez comment rendre vos pages web interactives et dynamiques grâce aux scripts JavaScript."
 category: "Programmation & Logique"
 resources:
-  - title: "LISEZ_MOI"
-    url: "/downloads/LISEZ_MOI.txt"
-difficulty: "Débutant"
+  - title: "exercice-1.pdf"
+    url: "/downloads/exercice-js-1.pdf"
+  - title: "exercice-2.pdf"
+    url: "/downloads/exercice-js-2.pdf"
+  - title: "exercice-3.pdf"
+    url: "/downloads/exercice-js-3.pdf"
 order: 2
 ---
 
