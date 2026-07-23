@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://machideau-online-course.vercel.app/sitemap.xml

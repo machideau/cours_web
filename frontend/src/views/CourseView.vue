@@ -6,6 +6,22 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/github-dark.css'
 import '../styles/course.css'
 
+// --- SEO ---
+function setMeta({ title, description, url }) {
+  document.title = title
+  const setTag = (sel, attr, val) => {
+    const el = document.querySelector(sel)
+    if (el) el.setAttribute(attr, val)
+  }
+  setTag('meta[name="description"]', 'content', description)
+  setTag('meta[property="og:title"]', 'content', title)
+  setTag('meta[property="og:description"]', 'content', description)
+  setTag('meta[property="og:url"]', 'content', url)
+  setTag('meta[name="twitter:title"]', 'content', title)
+  setTag('meta[name="twitter:description"]', 'content', description)
+  setTag('link[rel="canonical"]', 'href', url)
+}
+
 const route = useRoute()
 
 const course = ref(null)
@@ -39,6 +55,12 @@ const fetchCourseContent = async (slug) => {
       throw new Error('Erreur de chargement du cours.')
     }
     course.value = await res.json()
+    // Update page meta for SEO
+    setMeta({
+      title: `${course.value.title} — Cours de Machideau`,
+      description: course.value.description || `Lisez le cours "${course.value.title}" sur la plateforme Cours de Machideau.`,
+      url: window.location.href
+    })
   } catch (err) {
     console.error(err)
     error.value = err.message

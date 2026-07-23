@@ -2,6 +2,30 @@
 import { ref, onMounted, computed } from 'vue'
 import '../styles/home.css'
 
+// --- SEO ---
+function setMeta({ title, description, url }) {
+  document.title = title
+  const setTag = (sel, attr, val) => {
+    const el = document.querySelector(sel)
+    if (el) el.setAttribute(attr, val)
+  }
+  setTag('meta[name="description"]', 'content', description)
+  setTag('meta[property="og:title"]', 'content', title)
+  setTag('meta[property="og:description"]', 'content', description)
+  setTag('meta[property="og:url"]', 'content', url)
+  setTag('meta[name="twitter:title"]', 'content', title)
+  setTag('meta[name="twitter:description"]', 'content', description)
+  setTag('link[rel="canonical"]', 'href', url)
+}
+
+onMounted(() => {
+  setMeta({
+    title: 'Cours de Machideau — Plateforme de cours en ligne',
+    description: 'Plateforme de cours en ligne pour apprendre le développement web : HTML, CSS, JavaScript, Vue.js et plus encore. Cours rédigés en français, accessibles à tous les niveaux.',
+    url: window.location.origin + '/'
+  })
+})
+
 const courses = ref([])
 const loading = ref(true)
 const error = ref(null)
