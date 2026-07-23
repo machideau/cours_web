@@ -15,7 +15,7 @@ const selectedDifficulty = ref('Tous')
 const fetchCourses = async () => {
   try {
     loading.value = true
-    const res = await fetch('http://localhost:3000/api/courses')
+    const res = await fetch('/api/courses')
     if (!res.ok) {
       throw new Error('Impossible de charger la liste des cours.')
     }

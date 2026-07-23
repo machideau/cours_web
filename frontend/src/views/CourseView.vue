@@ -31,7 +31,7 @@ const fetchCourseContent = async (slug) => {
   try {
     loading.value = true
     error.value = null
-    const res = await fetch(`http://localhost:3000/api/courses/${slug}`)
+    const res = await fetch(`/api/courses/${slug}`)
     if (!res.ok) {
       if (res.status === 404) {
         throw new Error('Ce cours n\'existe pas.')

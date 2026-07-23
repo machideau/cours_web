@@ -1,0 +1,13 @@
+{
+  "name": "cours-web-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo configuration for hosting courses platform on Vercel",
+  "scripts": {
+    "build": "npm ci --prefix frontend && npm run build --prefix frontend && rm -rf dist && cp -r frontend/dist ./dist"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "gray-matter": "^4.0.3"
+  }
+}

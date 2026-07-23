@@ -1,8 +1,8 @@
-# 🎓 Cours Web — Plateforme de Cours en Ligne
+# Cours Web — Plateforme de Cours en Ligne
 
 Une plateforme légère et performante conçue pour publier et partager des cours sous format Markdown. Construite avec **Vue 3 (Vite)** pour l'interface utilisateur et **Node.js (Express)** pour le serveur de contenu.
 
-## ✨ Fonctionnalités Principales
+## Fonctionnalités Principales
 
 *   **Rendu Markdown Avancé** : Support complet du Markdown pour rédiger facilement des cours structurés.
 *   **Coloration Syntaxique** : Mise en évidence automatique du code source (HTML, CSS, JS, etc.) via `highlight.js`.
@@ -14,7 +14,7 @@ Une plateforme légère et performante conçue pour publier et partager des cour
 *   **Bouton de Copie de Code** : Un bouton intelligent apparaissant au survol pour copier les extraits de code en un clic.
 *   **Optimisation pour l'Impression** : Masquage automatique de l'interface (navigation, boutons) pour imprimer le cours ou l'exporter proprement en PDF.
 
-## 🏗️ Architecture du Projet
+## Architecture du Projet
 
 Le projet est divisé en trois dossiers principaux :
 
@@ -22,7 +22,7 @@ Le projet est divisé en trois dossiers principaux :
 *   `/backend` : L'API serveur (Node.js, Express) qui lit et distribue les fichiers Markdown.
 *   `/courses` : Le dossier contenant tous vos cours au format `.md`.
 
-## ✍️ Comment écrire un cours ?
+## Comment écrire un cours ?
 
 Pour ajouter un nouveau cours, il suffit de créer un fichier `.md` dans le dossier `/courses/`. 
 Le fichier doit commencer par un **Front-matter** (bloc YAML) contenant les métadonnées du cours.
@@ -63,7 +63,7 @@ console.log(message);
 *   `> [!WARNING]` (Orange) - Pour des mises en garde.
 *   `> [!IMPORTANT]` (Rouge) - Pour des notions cruciales à retenir.
 
-## 🚀 Installation et Lancement
+## Installation et Lancement
 
 ### Prérequis
 *   [Node.js](https://nodejs.org/) installé sur votre machine.
@@ -88,4 +88,4 @@ L'interface web sera disponible à l'adresse indiquée par Vite (généralement 
 
 ---
 
-**Construit avec ❤️ pour un apprentissage moderne et fluide.**
+**Construit avec soin pour un apprentissage moderne et fluide.**

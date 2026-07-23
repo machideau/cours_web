@@ -30,7 +30,7 @@ function getCoursesList() {
       if (file.endsWith('.md')) {
         const filePath = path.join(COURSES_DIR, file);
         const fileContent = fs.readFileSync(filePath, 'utf-8');
-        const { data } = matter(fileContent);
+        const { data, content } = matter(fileContent);
 
         // Make sure slug, title, category, etc. exist, fallback if needed
         const slug = data.slug || path.basename(file, '.md');
@@ -109,7 +109,11 @@ app.get('/api/courses/:slug', (req, res) => {
   }
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// Start the server only if run directly (development)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
