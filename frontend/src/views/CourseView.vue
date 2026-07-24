@@ -30,8 +30,8 @@ const course = ref(null)
 const loading = ref(true)
 const error = ref(null)
 
-// TOC Drawer State
-const isTocOpen = ref(false)
+// Active TOC section (scroll spy)
+const activeTocId = ref('')
 
 // Custom Renderer for Marked with Highlight.js
 const renderer = new marked.Renderer()
@@ -177,11 +177,39 @@ const addCopyButtons = () => {
 watch([parsedContent, loading], () => {
   if (!loading.value) {
     addCopyButtons()
+    setupScrollSpy()
   }
 }, { immediate: true })
 
+// Scroll spy pour la TOC active
+const setupScrollSpy = () => {
+  nextTick(() => {
+    const headings = document.querySelectorAll('.course-body h2[id]')
+    if (!headings.length) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            activeTocId.value = entry.target.id
+          }
+        })
+      },
+      { rootMargin: '-20% 0px -70% 0px' }
+    )
+
+    headings.forEach(h => observer.observe(h))
+  })
+}
+
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+// Classe CSS pour la difficulté
+const getDifficultyClass = (difficulty) => {
+  if (!difficulty) return ''
+  return `difficulty-${difficulty.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`
 }
 
 onMounted(() => {
@@ -190,91 +218,65 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container course-wrapper animate-fade-in">
+  <div class="course-page animate-fade-in">
 
     <!-- Loading state -->
-    <div v-if="loading" class="loading-state glass-panel">
-      <div class="spinner"></div>
-      <p>Chargement du cours...</p>
+    <div v-if="loading" class="container">
+      <div class="loading-state">
+        <div class="spinner" role="status" aria-label="Chargement"></div>
+        <p>Chargement du cours...</p>
+      </div>
     </div>
 
     <!-- Error state -->
-    <div v-else-if="error" class="error-state glass-panel">
-      <h3>Erreur</h3>
-      <p>{{ error }}</p>
-      <router-link to="/" class="btn btn-primary">Retour à l'accueil</router-link>
+    <div v-else-if="error" class="container">
+      <div class="error-state">
+        <span style="font-size:2.5rem">⚠️</span>
+        <h3>Erreur</h3>
+        <p>{{ error }}</p>
+        <router-link to="/" class="btn btn-primary">← Retour à l'accueil</router-link>
+      </div>
     </div>
 
     <!-- Course content -->
-    <div v-else class="course-container">
+    <template v-else>
 
-      <!-- Top Action Bar -->
-      <div class="course-top-bar">
-        <router-link to="/" class="btn btn-secondary back-btn">
-          ← Tous les cours
-        </router-link>
+      <!-- Contenu du cours -->
+      <div class="course-layout">
+        <div class="container">
+          <div class="course-main">
 
-        <button
-          v-if="tableOfContents.length > 0"
-          class="btn btn-secondary toc-toggle-btn"
-          @click="isTocOpen = !isTocOpen"
-        >
-          Sommaire {{ isTocOpen ? '▲' : '▼' }}
-        </button>
-      </div>
+            <!-- Downloadable Resources Box -->
+            <div v-if="course.resources && course.resources.length > 0" class="resources-card">
+              <span class="resources-title">📎 Ressources &amp; Exercices</span>
+              <div class="resources-list">
+                <a
+                  v-for="(res, index) in course.resources"
+                  :key="index"
+                  :href="res.url"
+                  target="_blank"
+                  rel="noopener"
+                  class="resource-item"
+                >
+                  ↓ {{ res.title || 'Ressource jointe' }}
+                </a>
+              </div>
+            </div>
 
-      <!-- Floating Table of Contents Dropdown -->
-      <transition name="fade-slide">
-        <div v-if="isTocOpen && tableOfContents.length > 0" class="toc-card glass-panel">
-          <div class="toc-card-header">
-            <span class="toc-card-title">Sommaire du cours</span>
-            <button class="toc-close-btn" @click="isTocOpen = false">✕</button>
+            <!-- Rendered Markdown -->
+            <article class="course-body markdown-body" v-html="parsedContent"></article>
+
+            <!-- Bottom Action Bar -->
+            <div class="course-bottom-bar">
+              <button class="btn btn-outline top-btn" @click="scrollToTop">
+                ↑ Haut de page
+              </button>
+            </div>
           </div>
-          <nav class="toc-links">
-            <a
-              v-for="item in tableOfContents"
-              :key="item.id"
-              :href="'#' + item.id"
-              class="toc-link"
-              @click="isTocOpen = false"
-            >
-              {{ item.title }}
-            </a>
-          </nav>
-        </div>
-      </transition>
-
-      <!-- Course title -->
-      <h1 class="course-title">{{ course.title }}</h1>
-
-      <!-- Downloadable Resources Box (if attached) -->
-      <div v-if="course.resources && course.resources.length > 0" class="resources-card glass-panel">
-        <span class="resources-title">Ressources & Exercices :</span>
-        <div class="resources-list">
-          <a
-            v-for="(res, index) in course.resources"
-            :key="index"
-            :href="res.url"
-            target="_blank"
-            rel="noopener"
-            class="resource-item"
-          >
-            {{ res.title || 'Ressource jointe' }}
-          </a>
         </div>
       </div>
 
-      <!-- Rendered Markdown -->
-      <article class="course-body glass-panel markdown-body" v-html="parsedContent">
-      </article>
-
-      <!-- Bottom Action Bar -->
-      <div class="course-bottom-bar">
-        <button class="btn btn-secondary top-btn" @click="scrollToTop">
-          ↑ Haut de page
-        </button>
-      </div>
-
-    </div>
+    </template>
   </div>
 </template>
+

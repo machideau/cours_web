@@ -85,97 +85,100 @@ const filteredCourses = computed(() => {
   })
 })
 
+// Icône selon la catégorie
+const getCategoryIcon = (category) => {
+  const icons = {
+    'HTML': '', 'CSS': '', 'JavaScript': '', 'Vue': '',
+    'React': '', 'Python': '', 'Node': '', 'Git': '',
+    'Base de données': '', 'SQL': '', 'API': '',
+    'Algorithmes': '', 'TypeScript': '', 'default': ''
+  }
+  for (const [key, icon] of Object.entries(icons)) {
+    if (category && category.toLowerCase().includes(key.toLowerCase())) return icon
+  }
+  return icons['default']
+}
+
+// Classe CSS pour la difficulté
+const getDifficultyClass = (difficulty) => {
+  if (!difficulty) return ''
+  return `difficulty-${difficulty.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')}`
+}
+
 onMounted(() => {
   fetchCourses()
 })
 </script>
 
 <template>
-  <div class="container dashboard animate-fade-in">
+  <div class="home-page animate-fade-in">
 
-    <!-- Page Header -->
-    <div class="page-header">
-      <h1 class="page-title">Cours disponibles</h1>
-      <p class="page-subtitle">Retrouvez ici tous les cours de la formation. Cliquez sur un cours pour le lire.</p>
-    </div>
+    <!-- ── Contenu principal ── -->
+    <section class="main-content">
+      <div class="container">
 
-    <!-- Filters & Search Toolbar -->
-    <div class="toolbar glass-panel">
-      <div class="search-box">
-        <input
-          type="text"
-          v-model="searchQuery"
-          placeholder="Rechercher un cours..."
-          aria-label="Rechercher des cours"
-        />
-      </div>
+        <!-- Zone des cours -->
+        <div class="courses-area">
 
-      <div class="filters">
-        <div class="filter-group">
-          <span class="filter-label">Catégorie :</span>
-          <div class="pills">
-            <button
-              v-for="cat in categories"
-              :key="cat"
-              class="pill"
-              :class="{ active: selectedCategory === cat }"
-              @click="selectedCategory = cat"
-            >
-              {{ cat }}
-            </button>
+          <!-- Loading state -->
+          <div v-if="loading" class="loading-state">
+            <div class="spinner" role="status" aria-label="Chargement"></div>
+            <p>Chargement des cours...</p>
+          </div>
+
+          <!-- Error state -->
+          <div v-else-if="error" class="error-state">
+            <span class="empty-state-icon">⚠️</span>
+            <h3>Erreur de connexion</h3>
+            <p>{{ error }}</p>
+            <button class="btn btn-primary" @click="fetchCourses">Réessayer</button>
+          </div>
+
+          <div v-else>
+            <!-- En-tête résultats -->
+            <div class="results-header">
+              <p class="results-count">
+                {{ filteredCourses.length }} cours
+                <span v-if="selectedCategory !== 'Tous' || selectedDifficulty !== 'Tous'">
+                  filtrés
+                </span>
+                <span v-else>disponibles</span>
+              </p>
+            </div>
+
+            <!-- Aucun résultat -->
+            <div v-if="filteredCourses.length === 0" class="empty-state">
+              <span class="empty-state-icon"></span>
+              <h3>Aucun cours trouvé</h3>
+              <p>Essayez de modifier votre recherche ou vos filtres.</p>
+            </div>
+
+            <!-- Grille de cours -->
+            <div v-else class="courses-grid">
+              <router-link
+                v-for="course in filteredCourses"
+                :key="course.slug"
+                :to="{ name: 'course', params: { slug: course.slug } }"
+                class="course-card"
+              >
+                <!-- Header coloré avec icône -->
+                <div class="course-card-header">
+                  <span class="course-card-icon" aria-hidden="true">{{ getCategoryIcon(course.category) }}</span>
+                </div>
+
+                <!-- Corps de la carte -->
+                <div class="course-card-body">
+                  <span class="course-card-category">{{ course.category }}</span>
+                  <h2 class="course-card-title">{{ course.title }}</h2>
+                  <p class="course-card-description">{{ course.description }}</p>
+                </div>
+              </router-link>
+            </div>
           </div>
         </div>
 
-        <div class="filter-group">
-          <span class="filter-label">Niveau :</span>
-          <div class="pills">
-            <button
-              v-for="diff in difficulties"
-              :key="diff"
-              class="pill"
-              :class="{ active: selectedDifficulty === diff }"
-              @click="selectedDifficulty = diff"
-            >
-              {{ diff }}
-            </button>
-          </div>
-        </div>
       </div>
-    </div>
-
-    <!-- Loading state -->
-    <div v-if="loading" class="loading-state">
-      <div class="spinner"></div>
-      <p>Chargement des cours...</p>
-    </div>
-
-    <!-- Error state -->
-    <div v-else-if="error" class="error-state glass-panel">
-      <h3>Erreur de connexion</h3>
-      <p>{{ error }}</p>
-      <button class="btn btn-primary" @click="fetchCourses">Réessayer</button>
-    </div>
-
-    <div v-else>
-      <div v-if="filteredCourses.length === 0" class="empty-state glass-panel">
-        <h3>Aucun cours ne correspond</h3>
-        <p>Essayez de modifier votre recherche ou vos filtres.</p>
-      </div>
-
-      <div v-else class="courses-grid">
-        <router-link
-          v-for="course in filteredCourses"
-          :key="course.slug"
-          :to="{ name: 'course', params: { slug: course.slug } }"
-          class="course-card glass-panel"
-        >
-          <span class="course-category">{{ course.category }}</span>
-          <h2 class="course-title">{{ course.title }}</h2>
-          <p class="course-description">{{ course.description }}</p>
-        </router-link>
-      </div>
-    </div>
-
+    </section>
   </div>
 </template>
 

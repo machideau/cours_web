@@ -8,32 +8,45 @@
   --transition-speed: 0.3s;
   --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
 
+  /* Layout */
+  --navbar-height: 64px;
+  --sidebar-width: 268px;
+  --radius-card: 12px;
+  --radius-btn: 8px;
+
   /* Light Theme Variables */
   --color-primary: #6366f1;
   --color-primary-hover: #4f46e5;
+  --color-primary-light: rgba(99, 102, 241, 0.08);
   --color-secondary: #d946ef;
   --color-secondary-hover: #c084fc;
-  
-  --bg-app: #f8fafc;
-  --bg-surface: rgba(255, 255, 255, 0.75);
+  --color-secondary-light: rgba(217, 70, 239, 0.08);
+
+  --bg-app: #f3f4f6;
+  --bg-surface: #ffffff;
   --bg-surface-solid: #ffffff;
+  --bg-surface-hover: #f9fafb;
   --bg-code: #1e1e3f;
-  
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
-  
-  --border-color: rgba(226, 232, 240, 0.8);
-  --border-focus: #818cf8;
-  
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-  
+  --bg-hero: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-on-primary: #ffffff;
+
+  --border-color: #e5e7eb;
+  --border-color-strong: #d1d5db;
+  --border-focus: #6366f1;
+
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px -1px rgba(0, 0, 0, 0.07);
+  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.08), 0 2px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  --shadow-navbar: 0 1px 0 0 var(--border-color);
+
   --backdrop-blur: 16px;
   --scrollbar-track: #f1f5f9;
-  --scrollbar-thumb: #cbd5e1;
-  --scrollbar-thumb-hover: #94a3b8;
+  --scrollbar-thumb: #d1d5db;
+  --scrollbar-thumb-hover: #9ca3af;
 
   --accent-color: var(--color-primary);
 
@@ -44,28 +57,34 @@
 html[data-theme="dark"] {
   --color-primary: #818cf8;
   --color-primary-hover: #6366f1;
+  --color-primary-light: rgba(129, 140, 248, 0.1);
   --color-secondary: #e879f9;
   --color-secondary-hover: #d946ef;
-  
-  --bg-app: #0b0f19;
-  --bg-surface: rgba(15, 23, 42, 0.65);
-  --bg-surface-solid: #0f172a;
+  --color-secondary-light: rgba(232, 121, 249, 0.1);
+
+  --bg-app: #111827;
+  --bg-surface: #1f2937;
+  --bg-surface-solid: #1f2937;
+  --bg-surface-hover: #273548;
   --bg-code: #0d0e15;
-  
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  
-  --border-color: rgba(30, 41, 59, 0.7);
+  --bg-hero: linear-gradient(135deg, #4f46e5 0%, #6d28d9 50%, #9d174d 100%);
+
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+
+  --border-color: #374151;
+  --border-color-strong: #4b5563;
   --border-focus: #6366f1;
-  
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
-  
-  --scrollbar-track: #1e293b;
-  --scrollbar-thumb: #475569;
-  --scrollbar-thumb-hover: #64748b;
+
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.3), 0 2px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  --shadow-navbar: 0 1px 0 0 var(--border-color);
+
+  --scrollbar-track: #1f2937;
+  --scrollbar-thumb: #4b5563;
+  --scrollbar-thumb-hover: #6b7280;
 }
 
 /* Base resets */
@@ -109,15 +128,15 @@ html, body, select, textarea, div {
 /* Legacy Webkit scrollbar for older browsers */
 @supports not (scrollbar-color: auto) {
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
     background: var(--scrollbar-track);
   }
   ::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
-    border-radius: 4px;
+    border-radius: 3px;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: var(--scrollbar-thumb-hover);
@@ -142,22 +161,32 @@ a:hover {
   color: var(--color-primary-hover);
 }
 
-/* Glassmorphism card utilities */
+/* Card component */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-speed) var(--transition-ease),
+              border-color var(--transition-speed) var(--transition-ease);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Glassmorphism panel (kept for backward compat) */
 .glass-panel {
   background: var(--bg-surface);
-  backdrop-filter: blur(var(--backdrop-blur));
-  -webkit-backdrop-filter: blur(var(--backdrop-blur));
   border: 1px solid var(--border-color);
-  border-radius: 16px;
-  box-shadow: var(--shadow-md);
-  transition: transform var(--transition-speed) var(--transition-ease),
-              box-shadow var(--transition-speed) var(--transition-ease),
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-speed) var(--transition-ease),
               border-color var(--transition-speed) var(--transition-ease);
 }
 
 .glass-panel:hover {
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: var(--shadow-md);
 }
 
 /* Buttons and Controls */
@@ -167,26 +196,27 @@ a:hover {
   justify-content: center;
   gap: 8px;
   padding: 10px 20px;
-  border-radius: 12px;
+  border-radius: var(--radius-btn);
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease;
   border: none;
   outline: none;
+  white-space: nowrap;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  background: var(--color-primary);
   color: #ffffff;
-  box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.3);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25);
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.4);
-  filter: brightness(1.05);
+  background: var(--color-primary-hover);
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+  transform: translateY(-1px);
 }
 
 .btn-primary:active {
@@ -195,13 +225,24 @@ a:hover {
 
 .btn-secondary {
   background: var(--bg-surface);
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--border-color-strong);
   color: var(--text-primary);
 }
 
 .btn-secondary:hover {
-  background: var(--border-color);
-  transform: translateY(-1px);
+  background: var(--bg-surface-hover);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary-light);
 }
 
 /* Animations */
@@ -217,20 +258,43 @@ a:hover {
 }
 
 .animate-fade-in {
-  animation: fadeInUp 0.5s var(--transition-ease) forwards;
+  animation: fadeInUp 0.4s var(--transition-ease) forwards;
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-primary {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.badge-secondary {
+  background: var(--color-secondary-light);
+  color: var(--color-secondary);
 }
 
 /* Markdown Parsed Content styling */
 .markdown-body {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-primary);
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 .markdown-body h1 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
   border-bottom: 2px solid var(--border-color);
   background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
   -webkit-background-clip: text;
@@ -238,8 +302,8 @@ a:hover {
 }
 
 .markdown-body h2 {
-  font-size: 1.6rem;
-  margin-top: 2rem;
+  font-size: 1.5rem;
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -247,8 +311,8 @@ a:hover {
 }
 
 .markdown-body h3 {
-  font-size: 1.25rem;
-  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  margin-top: 1.75rem;
   margin-bottom: 0.75rem;
 }
 
@@ -274,7 +338,7 @@ a:hover {
   height: 1px;
   border: none;
   background-color: var(--border-color);
-  margin: 2rem 0;
+  margin: 2.5rem 0;
 }
 
 /* Markdown Code Blocks */
@@ -283,13 +347,13 @@ a:hover {
   color: #f8fafc;
   padding: 1.25rem;
   padding-right: 3.5rem;
-  border-radius: 12px;
+  border-radius: var(--radius-card);
   overflow-x: auto;
   margin-bottom: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: var(--shadow-md);
   font-family: 'Courier New', Courier, monospace;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   position: relative;
 }
 
@@ -300,7 +364,7 @@ a:hover {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: rgba(255, 255, 255, 0.8);
-  padding: 5px 10px;
+  padding: 4px 10px;
   border-radius: 6px;
   font-family: var(--font-heading);
   font-size: 0.75rem;
@@ -333,14 +397,13 @@ a:hover {
   pointer-events: auto;
 }
 
-
 .markdown-body code {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 0.9em;
-  background-color: rgba(99, 102, 241, 0.1);
+  font-size: 0.88em;
+  background-color: var(--color-primary-light);
   color: var(--color-primary);
-  padding: 0.2rem 0.4rem;
-  border-radius: 6px;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
 }
 
 .markdown-body pre code {
@@ -355,26 +418,14 @@ a:hover {
 .markdown-body blockquote {
   padding: 1rem 1.25rem;
   border-left: 4px solid var(--color-primary);
-  background: rgba(99, 102, 241, 0.05);
-  border-radius: 0 12px 12px 0;
+  background: var(--color-primary-light);
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
   margin-bottom: 1.5rem;
-  font-style: italic;
   color: var(--text-secondary);
 }
 
 .markdown-body blockquote p {
   margin-bottom: 0;
-}
-
-/* GitHub style alerts */
-.markdown-body blockquote:has(strong:first-child) {
-  border-left-width: 4px;
-}
-
-/* Custom highlight styling for TIP and WARNING alerts */
-.markdown-body blockquote:contains("[!TIP]") {
-  border-left-color: #10b981;
-  background: rgba(16, 185, 129, 0.05);
 }
 
 /* Utility layout classes */

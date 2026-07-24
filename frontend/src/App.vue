@@ -44,33 +44,35 @@ onMounted(() => {
 <template>
   <header class="navbar">
     <div class="container navbar-content">
+      <!-- Logo -->
       <router-link to="/" class="logo-link">
         <div class="logo">
           <span class="logo-text">Cours<span class="gradient-text">Machideau</span></span>
         </div>
       </router-link>
-      
-      <div class="nav-actions">
-        <router-link to="/" class="nav-link" active-class="active-nav">
+
+      <!-- Nav links (centre) -->
+      <nav class="nav-links">
+        <router-link to="/" class="nav-link">
           Tous les cours
         </router-link>
-        
-        <button 
-          class="theme-toggle btn btn-secondary" 
-          @click="toggleTheme" 
+      </nav>
+
+      <!-- Actions (droite) -->
+      <div class="nav-actions">
+        <button
+          class="theme-toggle btn btn-secondary"
+          @click="toggleTheme"
           :aria-label="currentTheme === 'light' ? 'Activer le mode sombre' : 'Activer le mode clair'"
           title="Changer de thème"
         >
-          <span class="toggle-text">{{ currentTheme === 'light' ? 'Mode Sombre' : 'Mode Clair' }}</span>
+          <span v-if="currentTheme === 'light'"></span>
+          <span v-else></span>
+          <span class="toggle-text">{{ currentTheme === 'light' ? 'Mode sombre' : 'Mode clair' }}</span>
         </button>
-
       </div>
     </div>
   </header>
-
-  <!-- Decorative background blobs -->
-  <div class="bg-decoration blob-1"></div>
-  <div class="bg-decoration blob-2"></div>
 
   <main class="app-main">
     <router-view v-slot="{ Component }">
@@ -80,10 +82,10 @@ onMounted(() => {
     </router-view>
   </main>
 
-
   <footer class="app-footer">
     <div class="container footer-content">
-      <p>&copy; 2026 Antigravity Cours. Conçu pour le développement web moderne.</p>
+      <p class="footer-copy">© 2026 <span class="footer-brand">CoursMachideau</span>. Tous droits réservés.</p>
+      <p class="footer-copy">Conçu pour aider les passionnés du code.</p>
     </div>
   </footer>
 </template>
