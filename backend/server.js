@@ -1,12 +1,19 @@
 const express = require('express');
 const cors = require('cors');
 const { getCoursesList, getCourseBySlug } = require('./services/courseService');
+const { generateSitemap } = require('./services/sitemapService');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
+
+// Sitemap dynamique
+app.get('/sitemap.xml', (req, res) => {
+  res.header('Content-Type', 'application/xml');
+  res.send(generateSitemap());
+});
 
 // Endpoint to list all courses
 app.get('/api/courses', (req, res) => {

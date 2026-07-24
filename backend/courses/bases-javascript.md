@@ -12,6 +12,16 @@ resources:
   - title: "exercice-3.pdf"
     url: "/downloads/exercice-js-3.pdf"
 order: 2
+quiz:
+  - question: "Quel mot-clé permet de déclarer une variable immuable en JavaScript ?"
+    options: ["var", "let", "const", "static"]
+    answer: "const"
+  - question: "Que retourne `typeof null` en JavaScript ?"
+    options: ["\"null\"", "\"undefined\"", "\"object\"", "\"number\""]
+    answer: "\"object\""
+  - question: "Quelle méthode permet d'ajouter un élément à la fin d'un tableau ?"
+    options: ["push()", "pop()", "shift()", "unshift()"]
+    answer: "push()"
 ---
 
 # Les Bases de JavaScript

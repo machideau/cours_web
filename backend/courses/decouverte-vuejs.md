@@ -6,6 +6,16 @@ category: "Design & Frontend"
 difficulty: "Intermédiaire"
 image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&w=600&q=80"
 order: 3
+quiz:
+  - question: "Quelle directive Vue.js permet de répéter un élément en boucle ?"
+    options: ["v-if", "v-for", "v-model", "v-show"]
+    answer: "v-for"
+  - question: "Que fait la directive `v-model` ?"
+    options: ["Affiche conditionnellement un élément", "Crée une liaison de données bidirectionnelle", "Appelle une méthode", "Définit un événement"]
+    answer: "Crée une liaison de données bidirectionnelle"
+  - question: "Dans la Composition API, quelle fonction rend une valeur réactive ?"
+    options: ["reactive()", "computed()", "ref()", "watch()"]
+    answer: "ref()"
 ---
 
 # Découverte de Vue.js 3

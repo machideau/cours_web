@@ -8,6 +8,16 @@ order: 3
 resources:
   - title: "exercice-1.pdf"
     url: "/downloads/exercice-np-1.pdf"
+quiz:
+  - question: "Quelle bibliothèque Python est utilisée pour le calcul numérique matriciel ?"
+    options: ["pandas", "matplotlib", "numpy", "scipy"]
+    answer: "numpy"
+  - question: "Que retourne `np.array([1,2,3]).shape` ?"
+    options: ["[1, 2, 3]", "(3,)", "3", "(1, 3)"]
+    answer: "(3,)"
+  - question: "Quelle structure Pandas représente un tableau de données 2D avec des labels ?"
+    options: ["Series", "Array", "DataFrame", "Matrix"]
+    answer: "DataFrame"
 ---
 
 # Fondations Mathématiques, NumPy et Pandas

@@ -19,6 +19,7 @@ function formatCourseData(data, content, fileOrSlug) {
     duration: data.duration || '5 min',
     order: data.order !== undefined ? data.order : 99,
     image: data.image || '',
+    quiz: data.quiz || [],
     resources: data.resources || [],
     content: content || ''
   };

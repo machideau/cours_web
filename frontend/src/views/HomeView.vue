@@ -31,7 +31,7 @@ const {
           </div>
 
           <div v-else-if="error" class="error-state">
-            <span class="empty-state-icon">⚠️</span>
+            <span class="empty-state-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
             <h3>Erreur de connexion</h3>
             <p>{{ error }}</p>
             <button class="btn btn-primary" @click="fetchCourses">Réessayer</button>
@@ -47,7 +47,7 @@ const {
             </div>
 
             <div v-if="filteredCourses.length === 0" class="empty-state">
-              <span class="empty-state-icon"></span>
+              <span class="empty-state-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
               <h3>Aucun cours trouvé</h3>
               <p>Essayez de modifier votre recherche ou vos filtres.</p>
             </div>

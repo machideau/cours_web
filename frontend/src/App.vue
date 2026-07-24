@@ -1,8 +1,11 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import './styles/app.css'
+import SearchModal from './components/SearchModal.vue'
+import { useCourses } from './composables/useCourses.js'
 
 const currentTheme = ref('light')
+const { courses } = useCourses()
 
 const toggleTheme = () => {
   const newTheme = currentTheme.value === 'light' ? 'dark' : 'light'
@@ -10,9 +13,7 @@ const toggleTheme = () => {
   localStorage.setItem('color-scheme', newTheme)
   document.documentElement.setAttribute('data-theme', newTheme)
   const metaColorScheme = document.querySelector('meta[name="color-scheme"]')
-  if (metaColorScheme) {
-    metaColorScheme.content = newTheme
-  }
+  if (metaColorScheme) metaColorScheme.content = newTheme
 }
 
 onMounted(() => {
@@ -27,10 +28,7 @@ onMounted(() => {
       document.documentElement.setAttribute('data-theme', systemTheme)
     }
   }
-
-  if (mediaQuery.addEventListener) {
-    mediaQuery.addEventListener('change', handleChange)
-  }
+  if (mediaQuery.addEventListener) mediaQuery.addEventListener('change', handleChange)
 })
 </script>
 
@@ -48,13 +46,12 @@ onMounted(() => {
 
       <!-- Nav links (centre) -->
       <nav class="nav-links">
-        <router-link to="/" class="nav-link">
-          Tous les cours
-        </router-link>
+        <router-link to="/" class="nav-link">Tous les cours</router-link>
       </nav>
 
       <!-- Actions (droite) -->
       <div class="nav-actions">
+        <SearchModal :courses="courses" />
         <button
           class="theme-toggle btn btn-secondary"
           @click="toggleTheme"
