@@ -1,0 +1,85 @@
+/* ── Layout & Contenu du cours ─────────────── */
+.course-layout {
+  flex: 1;
+  padding: 2rem 0 3rem;
+}
+
+.course-main {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.course-top-bar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.resources-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.resources-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.resources-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.resource-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.resource-item:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.course-body {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.course-bottom-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.top-btn {
+  font-size: 0.88rem;
+  cursor: pointer;
+}

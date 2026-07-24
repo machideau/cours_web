@@ -4,6 +4,7 @@ title: "Découverte de Vue.js 3"
 description: "Apprenez à structurer des interfaces utilisateur réactives avec la Composition API de Vue.js."
 category: "Design & Frontend"
 difficulty: "Intermédiaire"
+image: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&w=600&q=80"
 order: 3
 ---
 

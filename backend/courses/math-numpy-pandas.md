@@ -3,6 +3,7 @@ slug: fondations-maths-numpy-pandas
 title: "Fondations Mathématiques, NumPy et Pandas"
 description: "Les bases d'algèbre linéaire, calcul différentiel et probabilités nécessaires au Machine Learning, avec mise en pratique via NumPy et Pandas."
 category: "Intelligence Artificielle & Machine Learning"
+image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80"
 order: 3
 resources:
   - title: "exercice-1.pdf"

@@ -4,6 +4,7 @@ title: "Introduction à HTML5 et CSS3"
 description: "Apprenez les bases indispensables pour structurer et embellir vos pages Web."
 category: "Design & Frontend"
 difficulty: "Débutant"
+image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80"
 order: 1
 ---
 

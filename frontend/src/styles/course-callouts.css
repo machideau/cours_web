@@ -1,0 +1,70 @@
+/* ── Callouts & états loading/error ──────── */
+.callout {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-card);
+  border-left: 4px solid var(--border-color);
+  background: var(--bg-surface);
+}
+
+.callout-header { margin-bottom: 0.5rem; }
+
+.callout-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.callout-body p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.callout-note   { border-left-color: #3b82f6; background: rgba(59, 130, 246, 0.05); }
+.callout-note .callout-title { color: #3b82f6; }
+
+.callout-tip    { border-left-color: #10b981; background: rgba(16, 185, 129, 0.05); }
+.callout-tip .callout-title { color: #10b981; }
+
+.callout-warning { border-left-color: #f59e0b; background: rgba(245, 158, 11, 0.05); }
+.callout-warning .callout-title { color: #f59e0b; }
+
+.callout-important { border-left-color: #ef4444; background: rgba(239, 68, 68, 0.05); }
+.callout-important .callout-title { color: #ef4444; }
+
+.loading-state,
+.error-state {
+  text-align: center;
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  margin: 2rem 0;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-color);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+  .course-body { padding: 1.5rem; }
+  .course-hero-title { font-size: 1.5rem; }
+  .course-bottom-bar { justify-content: center; }
+  .top-btn { width: 100%; }
+}

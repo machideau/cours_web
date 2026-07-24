@@ -3,6 +3,7 @@ slug: bases-javascript
 title: "Les Bases de JavaScript"
 description: "Découvrez comment rendre vos pages web interactives et dynamiques grâce aux scripts JavaScript."
 category: "Programmation & Logique"
+image: "https://images.unsplash.com/photo-1579468118864-1b9ea3c0db4a?auto=format&fit=crop&w=600&q=80"
 resources:
   - title: "exercice-1.pdf"
     url: "/downloads/exercice-js-1.pdf"
