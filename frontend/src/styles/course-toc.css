@@ -12,16 +12,8 @@
   display: none;
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1024px) {
   .course-toc { display: block; }
-
-  .course-layout .container {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-  }
-
-  .course-main { flex: 1; min-width: 0; }
 }
 
 .toc-title {

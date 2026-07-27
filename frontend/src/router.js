@@ -13,6 +13,11 @@ const routes = [
     name: 'course',
     component: CourseView,
     props: true
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: () => import('./views/NotFoundView.vue')
   }
 ]
 

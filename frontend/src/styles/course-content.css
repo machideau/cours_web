@@ -5,8 +5,19 @@
 }
 
 .course-main {
+  flex: 1;
+  min-width: 0;
   max-width: 860px;
   margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .course-grid-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: 1400px;
+  }
 }
 
 .course-top-bar {

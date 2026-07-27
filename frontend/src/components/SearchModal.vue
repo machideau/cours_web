@@ -16,7 +16,7 @@ const catColor = cat => COLORS[cat] || '#6366f1'
 const catBg    = cat => catColor(cat) + '18'
 
 const results = computed(() => {
-  if (!query.value.trim()) return props.courses.slice(0, 6)
+  if (!query.value.trim()) return props.courses
   const q = query.value.toLowerCase()
   return props.courses.filter(c =>
     c.title.toLowerCase().includes(q) ||
@@ -27,7 +27,7 @@ const results = computed(() => {
 
 const openModal  = () => { open.value = true; query.value = ''; activeIndex.value = 0 }
 const closeModal = () => { open.value = false }
-const navigate   = c  => { closeModal(); router.push(`/cours/${c.slug}`) }
+const navigate   = c  => { closeModal(); router.push(`/course/${c.slug}`) }
 
 function onKeydown(e) {
   if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); openModal() }

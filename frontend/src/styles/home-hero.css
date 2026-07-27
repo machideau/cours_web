@@ -1,76 +1,49 @@
-/* ── Hero Section ─────────────────────────── */
+/* ── Hero section — minimal structural style, using original theme colors ──────── */
 .hero {
-  background: var(--bg-hero);
-  padding: 3.5rem 0 4rem;
+  background: var(--bg-app);
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--border-color);
   position: relative;
-  overflow: hidden;
+  color: var(--text-primary);
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='30'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  pointer-events: none;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-}
+.hero-content { position: relative; z-index: 1; }
 
 .hero-title {
-  font-size: 2.4rem;
+  font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 0.75rem;
-  line-height: 1.2;
   font-family: var(--font-heading);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
 }
 
 .hero-subtitle {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
   max-width: 560px;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  line-height: 1.7;
+  margin-bottom: 0;
 }
 
-.hero-search {
+/* Stats / meta bar under hero */
+.hero-meta {
   display: flex;
   align-items: center;
-  max-width: 560px;
-  background: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-}
-
-.hero-search-icon {
-  padding: 0 14px 0 18px;
-  font-size: 1.1rem;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
+}
+
+.hero-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hero-meta-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--color-primary);
   flex-shrink: 0;
-}
-
-.hero-search input {
-  flex: 1;
-  border: none;
-  outline: none;
-  padding: 14px 0;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--text-primary);
-  background: transparent;
-}
-
-.hero-search input::placeholder {
-  color: #9ca3af;
-}
-
-.hero-search-btn {
-  padding: 10px 20px;
-  margin: 6px;
-  border-radius: 6px;
-  font-size: 0.9rem;
 }

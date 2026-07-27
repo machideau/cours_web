@@ -4,20 +4,10 @@ title: "Fondations Mathématiques, NumPy et Pandas"
 description: "Les bases d'algèbre linéaire, calcul différentiel et probabilités nécessaires au Machine Learning, avec mise en pratique via NumPy et Pandas."
 category: "Intelligence Artificielle & Machine Learning"
 image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=600&q=80"
-order: 3
+order: 1
 resources:
   - title: "exercice-1.pdf"
     url: "/downloads/exercice-np-1.pdf"
-quiz:
-  - question: "Quelle bibliothèque Python est utilisée pour le calcul numérique matriciel ?"
-    options: ["pandas", "matplotlib", "numpy", "scipy"]
-    answer: "numpy"
-  - question: "Que retourne `np.array([1,2,3]).shape` ?"
-    options: ["[1, 2, 3]", "(3,)", "3", "(1, 3)"]
-    answer: "(3,)"
-  - question: "Quelle structure Pandas représente un tableau de données 2D avec des labels ?"
-    options: ["Series", "Array", "DataFrame", "Matrix"]
-    answer: "DataFrame"
 ---
 
 # Fondations Mathématiques, NumPy et Pandas

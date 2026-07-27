@@ -1,73 +1,115 @@
-/* ── Grille & Cartes de cours ──────────────── */
+/* ── Grille de cours — structure roadmap.sh, couleurs originales ───── */
 @import './home-card-header.css';
+
+.courses-section {
+  padding: 0;
+}
+
+.courses-group {
+  position: relative;
+  padding: 3rem 0 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.courses-group:last-child { border-bottom: none; }
+
+.courses-group-label {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-app);
+  border: 1px solid var(--border-color);
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
 
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.75rem;
 }
 
+@media (min-width: 540px)  { .courses-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px)  { .courses-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1200px) { .courses-grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* ── Carte roadmap.sh style ── */
 .course-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding: 0.8rem 1.1rem;
   border-radius: var(--radius-card);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
-}
-
-.course-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-3px);
-  border-color: transparent;
-}
-
-.course-card-body {
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  gap: 0.5rem;
-}
-
-.course-card-category {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-primary);
-}
-
-.course-card-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  line-height: 1.35;
-  margin: 0;
-}
-
-.course-card-description {
-  font-size: 0.875rem;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
   color: var(--text-secondary);
-  flex: 1;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin: 0;
-  line-height: 1.5;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+  box-shadow: var(--shadow-sm);
 }
 
-.course-card-footer {
+/* fill-left effect */
+.course-card::before {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 0;
+  background: var(--color-primary-light);
+  z-index: 0;
+  transition: width 0.28s ease;
+}
+
+.course-card:hover { 
+  border-color: var(--border-focus); 
+  color: var(--text-primary); 
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.course-card:hover::before { width: 100%; }
+
+.course-card-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.25rem;
-  border-top: 1px solid var(--border-color);
-  background: var(--bg-app);
+  gap: 0.75rem;
+}
+
+.course-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: inherit;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.course-card-arrow {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.course-card:hover .course-card-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+.course-card-diff {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  background: var(--bg-surface-hover);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
