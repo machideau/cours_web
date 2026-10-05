@@ -69,6 +69,8 @@ export default defineConfig({
     ['meta', { property: 'og:image', content: 'https://machlearn.vercel.app/logo.png' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
     ['meta', { name: 'twitter:image', content: 'https://machlearn.vercel.app/logo.png' }],
+    // Google Search Console
+    ['meta', { name: 'google-site-verification', content: 'epcVCOZhiKE2jHCkBrc2TEvNe8vmt4EeCS_9SW4k4ig' }],
     [
       'script',
       {},
