@@ -52,10 +52,23 @@ export default defineConfig({
   title: "MachLearn",
   description: "Plateforme d'apprentissage en ligne sur l'IA et le code, gratuite et open-source.",
   lastUpdated: true,
+  lang: 'fr-FR',
+
+  // Sitemap automatique pour Google
+  sitemap: {
+    hostname: 'https://machlearn.vercel.app'
+  },
+
   head: [
     ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
     ['link', { rel: 'shortcut icon', type: 'image/png', href: '/logo.png' }],
     ['link', { rel: 'apple-touch-icon', href: '/logo.png' }],
+    // Open Graph / SEO
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:site_name', content: 'MachLearn' }],
+    ['meta', { property: 'og:image', content: 'https://machlearn.vercel.app/logo.png' }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { name: 'twitter:image', content: 'https://machlearn.vercel.app/logo.png' }],
     [
       'script',
       {},
