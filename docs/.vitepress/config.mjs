@@ -66,9 +66,20 @@ export default defineConfig({
     // Open Graph / SEO
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'MachLearn' }],
+    ['meta', { property: 'og:url', content: 'https://machlearn.vercel.app' }],
+    ['meta', { property: 'og:title', content: 'MachLearn — Cours gratuits sur l\'IA et le Machine Learning' }],
+    ['meta', { property: 'og:description', content: 'Apprenez l\'intelligence artificielle, le deep learning, n8n et MLOps avec des cours gratuits, rigoureux et pratiques. PyTorch, Transformers, Docker — from scratch.' }],
     ['meta', { property: 'og:image', content: 'https://machlearn.vercel.app/logo.png' }],
+    ['meta', { property: 'og:image:width', content: '1254' }],
+    ['meta', { property: 'og:image:height', content: '1254' }],
+    ['meta', { property: 'og:image:alt', content: 'MachLearn — Plateforme de cours gratuits sur l\'IA' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { name: 'twitter:title', content: 'MachLearn — Cours gratuits sur l\'IA' }],
+    ['meta', { name: 'twitter:description', content: 'IA, Machine Learning, Deep Learning, n8n — cours gratuits et open-source.' }],
     ['meta', { name: 'twitter:image', content: 'https://machlearn.vercel.app/logo.png' }],
+    // Mots-clés SEO
+    ['meta', { name: 'keywords', content: 'intelligence artificielle, machine learning, deep learning, cours gratuits, n8n, automatisation, PyTorch, transformers, MLOps, Docker, FastAPI, formation IA, open source' }],
+    ['meta', { name: 'author', content: 'MachLearn' }],
     // Google Search Console
     ['meta', { name: 'google-site-verification', content: 'epcVCOZhiKE2jHCkBrc2TEvNe8vmt4EeCS_9SW4k4ig' }],
     [
