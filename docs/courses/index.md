@@ -1,5 +1,7 @@
 ---
 title: Tous les cours
+sidebar: false
+aside: false
 ---
 
 # Catalogue des Formations
