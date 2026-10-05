@@ -67,19 +67,70 @@ export default defineConfig({
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'MachLearn' }],
     ['meta', { property: 'og:url', content: 'https://machlearn.vercel.app' }],
-    ['meta', { property: 'og:title', content: 'MachLearn — Cours gratuits sur l\'IA et le Machine Learning' }],
-    ['meta', { property: 'og:description', content: 'Apprenez l\'intelligence artificielle, le deep learning, n8n et MLOps avec des cours gratuits, rigoureux et pratiques. PyTorch, Transformers, Docker — from scratch.' }],
+    ['meta', { property: 'og:title', content: 'MachLearn | Cours gratuits sur l\'IA et le Machine Learning' }],
+    ['meta', { property: 'og:description', content: 'Apprenez l\'intelligence artificielle, le deep learning, n8n et MLOps avec des cours gratuits, rigoureux et pratiques. PyTorch, Transformers, Docker - from scratch.' }],
     ['meta', { property: 'og:image', content: 'https://machlearn.vercel.app/logo.png' }],
     ['meta', { property: 'og:image:width', content: '1254' }],
     ['meta', { property: 'og:image:height', content: '1254' }],
-    ['meta', { property: 'og:image:alt', content: 'MachLearn — Plateforme de cours gratuits sur l\'IA' }],
+    ['meta', { property: 'og:image:alt', content: 'MachLearn - Cours gratuits sur l\'IA et le Machine Learning' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
-    ['meta', { name: 'twitter:title', content: 'MachLearn — Cours gratuits sur l\'IA' }],
-    ['meta', { name: 'twitter:description', content: 'IA, Machine Learning, Deep Learning, n8n — cours gratuits et open-source.' }],
+    ['meta', { name: 'twitter:title', content: 'MachLearn, Cours gratuits sur l\'IA' }],
+    ['meta', { name: 'twitter:description', content: 'IA, Machine Learning, Deep Learning, n8n - cours gratuits et open-source, machideau' }],
     ['meta', { name: 'twitter:image', content: 'https://machlearn.vercel.app/logo.png' }],
     // Mots-clés SEO
-    ['meta', { name: 'keywords', content: 'intelligence artificielle, machine learning, deep learning, cours gratuits, n8n, automatisation, PyTorch, transformers, MLOps, Docker, FastAPI, formation IA, open source' }],
-    ['meta', { name: 'author', content: 'MachLearn' }],
+    ['meta', { name: 'keywords', content: 'machideau, machlearn, platforme machideau, samie, lefaure, intelligence artificielle, machine learning, deep learning, cours gratuits, n8n, automatisation, PyTorch, transformers, MLOps, Docker, FastAPI, formation IA, open source' }],
+    ['meta', { name: 'author', content: 'Machideau' }],
+    // Robots & indexation
+    ['meta', { name: 'robots', content: 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' }],
+    ['meta', { name: 'googlebot', content: 'index, follow' }],
+    // Langue & région
+    ['meta', { 'http-equiv': 'content-language', content: 'fr' }],
+    ['meta', { property: 'og:locale', content: 'fr_FR' }],
+    ['meta', { property: 'og:locale:alternate', content: 'en_US' }],
+    // Couleur du thème (onglet mobile)
+    ['meta', { name: 'theme-color', content: '#F5F3ED' }],
+    ['meta', { name: 'msapplication-TileColor', content: '#F5F3ED' }],
+    ['meta', { name: 'msapplication-TileImage', content: '/logo.png' }],
+    // Canonical
+    ['link', { rel: 'canonical', href: 'https://machlearn.vercel.app' }],
+    // Description longue pour moteurs
+    ['meta', { name: 'description', content: 'MachLearn : cours gratuits et open-source sur l\'intelligence artificielle, le machine learning, le deep learning, PyTorch, Transformers, n8n, MLOps, Docker et FastAPI. Apprenez from scratch avec des modules rigoureux et pratiques.' }],
+    ['meta', { name: 'abstract', content: 'Plateforme d\'apprentissage gratuite sur l\'IA, le ML et l\'automatisation logicielle.' }],
+    ['meta', { name: 'category', content: 'Education, Intelligence Artificielle, Technologie' }],
+    ['meta', { name: 'classification', content: 'Education' }],
+    ['meta', { name: 'subject', content: 'Intelligence Artificielle, Machine Learning, Deep Learning, Automatisation' }],
+    ['meta', { name: 'coverage', content: 'Worldwide' }],
+    ['meta', { name: 'distribution', content: 'Global' }],
+    ['meta', { name: 'rating', content: 'General' }],
+    ['meta', { name: 'revisit-after', content: '7 days' }],
+    ['meta', { name: 'language', content: 'French' }],
+    // Structured Data JSON-LD (WebSite + EducationalOrganization)
+    ['script', { type: 'application/ld+json' }, JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "MachLearn",
+      "url": "https://machlearn.vercel.app",
+      "description": "Plateforme d'apprentissage gratuite sur l'IA, le machine learning et l'automatisation.",
+      "inLanguage": "fr-FR",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://machlearn.vercel.app/courses/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    })],
+    ['script', { type: 'application/ld+json' }, JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "MachLearn",
+      "url": "https://machlearn.vercel.app",
+      "logo": "https://machlearn.vercel.app/logo.png",
+      "description": "Cours gratuits sur l'intelligence artificielle, le machine learning, le deep learning et l'automatisation.",
+      "sameAs": ["https://github.com/machideau/cours_web"],
+      "knowsAbout": [
+        "Intelligence Artificielle", "Machine Learning", "Deep Learning",
+        "PyTorch", "TensorFlow", "Transformers", "n8n", "MLOps", "Docker", "FastAPI"
+      ]
+    })],
     // Google Search Console
     ['meta', { name: 'google-site-verification', content: 'epcVCOZhiKE2jHCkBrc2TEvNe8vmt4EeCS_9SW4k4ig' }],
     [
