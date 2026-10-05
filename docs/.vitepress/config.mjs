@@ -1,0 +1,133 @@
+import { defineConfig } from 'vitepress'
+import fs from 'fs'
+import path from 'path'
+import matter from 'gray-matter'
+import { fileURLToPath } from 'url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+function getCoursesSidebar() {
+  const coursesDir = path.join(__dirname, '../courses')
+  if (!fs.existsSync(coursesDir)) return []
+
+  const files = fs.readdirSync(coursesDir).filter(f => f.endsWith('.md') && f !== 'index.md')
+
+  const items = files.map(file => {
+    const content = fs.readFileSync(path.join(coursesDir, file), 'utf-8')
+    const { data } = matter(content)
+    return {
+      text: data.title || file.replace('.md', ''),
+      link: `/courses/${file.replace('.md', '')}`,
+      order: data.order || 99,
+      category: data.category || 'Général'
+    }
+  }).sort((a, b) => a.order - b.order)
+
+  const categories = {}
+  items.forEach(item => {
+    if (!categories[item.category]) categories[item.category] = []
+    categories[item.category].push(item)
+  })
+
+  // Ordre logique d'affichage des sections
+  const preferredOrder = [
+    'n8n',
+    'Intelligence Artificielle & Machine Learning'
+  ]
+
+  const sortedCats = Object.keys(categories).sort((a, b) => {
+    const idxA = preferredOrder.indexOf(a)
+    const idxB = preferredOrder.indexOf(b)
+    return (idxA === -1 ? 99 : idxA) - (idxB === -1 ? 99 : idxB)
+  })
+
+  return sortedCats.map(cat => ({
+    text: cat === 'n8n' ? 'Automatisation & Workflows (n8n)' : 'Intelligence Artificielle & Machine Learning',
+    collapsed: false,
+    items: categories[cat]
+  }))
+}
+
+export default defineConfig({
+  title: "MachLearn",
+  description: "Plateforme d'apprentissage en ligne sur l'IA et le code, gratuite et open-source.",
+  lastUpdated: true,
+  head: [
+    ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
+    ['link', { rel: 'shortcut icon', type: 'image/png', href: '/logo.png' }],
+    ['link', { rel: 'apple-touch-icon', href: '/logo.png' }],
+    [
+      'script',
+      {},
+      `
+        (function() {
+          const userPref = localStorage.getItem('vitepress-theme-appearance');
+          if (!userPref || userPref === 'auto') {
+            localStorage.setItem('vitepress-theme-appearance', 'light');
+            document.documentElement.classList.remove('dark');
+          }
+        })();
+      `
+    ]
+  ],
+  markdown: {
+    math: true
+  },
+  themeConfig: {
+    logo: { src: '/logo.png', alt: 'MachLearn' },
+    siteTitle: false,
+    search: {
+      provider: 'local',
+      options: {
+        locales: {
+          root: {
+            translations: {
+              button: {
+                buttonText: 'Rechercher un cours...',
+                buttonAriaLabel: 'Rechercher un cours'
+              },
+              modal: {
+                noResultsText: 'Aucun résultat pour',
+                resetButtonTitle: 'Effacer la recherche',
+                footer: {
+                  selectText: 'pour sélectionner',
+                  navigateText: 'pour naviguer',
+                  closeText: 'pour fermer'
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    outline: {
+      level: [2, 3],
+      label: 'Sur cette page'
+    },
+    docFooter: {
+      prev: 'Module précédent',
+      next: 'Module suivant'
+    },
+    darkModeSwitchLabel: 'Thème',
+    sidebarMenuLabel: 'Menu des cours',
+    returnToTopLabel: 'Haut de page',
+    nav: [
+      { text: 'Accueil', link: '/' },
+      { text: 'Tous les cours', link: '/courses/' }
+    ],
+    sidebar: {
+      '/courses/': getCoursesSidebar()
+    },
+    editLink: {
+      pattern: 'https://github.com/machideau/cours_web/edit/main/docs/:path',
+      text: 'Suggérer une modification sur GitHub'
+    },
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/machideau/cours_web' }
+    ],
+    footer: {
+      message: 'Propulsé par Machideau. Open Source et 100% gratuit.',
+      copyright: 'Copyright © 2026'
+    }
+  }
+})

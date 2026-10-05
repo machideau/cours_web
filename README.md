@@ -1,91 +1,46 @@
-# Cours Web — Plateforme de Cours en Ligne
+# MachLearn - Plateforme Open Source 100% Gratuite
 
-Une plateforme légère et performante conçue pour publier et partager des cours sous format Markdown. Construite avec **Vue 3 (Vite)** pour l'interface utilisateur et **Node.js (Express)** pour le serveur de contenu.
+Une plateforme de cours en ligne générée statiquement (SSG) via **VitePress**. Spécialement conçue pour être gratuite à héberger, facile à contribuer et accessible hors ligne.
 
-## Fonctionnalités Principales
+## Fonctionnalités 
 
-*   **Rendu Markdown Avancé** : Support complet du Markdown pour rédiger facilement des cours structurés.
-*   **Coloration Syntaxique** : Mise en évidence automatique du code source (HTML, CSS, JS, etc.) via `highlight.js`.
-*   **Recherche Intégrale (Full-Text)** : Barre de recherche performante pour trouver instantanément une notion dans le titre, la description ou **l'intégralité du texte** des cours.
-*   **Encadrés Pédagogiques (Callouts)** : Des alertes stylisées pour attirer l'attention (`Note`, `Astuce`, `Attention`, `Important`).
-*   **Sommaire Interactif (TOC)** : Un menu flottant généré automatiquement à partir des titres (`##`) pour une navigation rapide dans le cours.
-*   **Ressources Téléchargeables** : Possibilité d'attacher des fichiers, exercices ou TP en téléchargement direct en haut du cours.
-*   **Mode Sombre / Clair** : Thème personnalisable sauvegardé dans les préférences locales de l'utilisateur.
-*   **Bouton de Copie de Code** : Un bouton intelligent apparaissant au survol pour copier les extraits de code en un clic.
-*   **Optimisation pour l'Impression** : Masquage automatique de l'interface (navigation, boutons) pour imprimer le cours ou l'exporter proprement en PDF.
+*   **Hébergement Gratuit (SSG)** : Se déploie facilement sur GitHub Pages, Vercel ou Netlify sans backend Node.js (0 coût de serveur).
+*   **Suivi de Progression Local** : Vos cours terminés sont marqués et enregistrés dans le navigateur, pas besoin de compte ou de base de données.
+*   **Commentaires Giscus** : Laissez des commentaires en bas des cours grâce à l'intégration gratuite avec les Discussions GitHub.
+*   **Mode Hors-Ligne (PWA)** : Bientôt disponible, permet de consulter les cours sans connexion internet.
+*   **Contribution Open Source** : Un bouton permet de corriger/suggérer des modifications facilement.
 
-## Architecture du Projet
+## Comment ajouter un cours ?
 
-Le projet est divisé en trois dossiers principaux :
+1. Ajoutez simplement un fichier `.md` dans le dossier `docs/courses/`.
+2. Le système de navigation le détectera automatiquement grâce au front-matter.
 
-*   `/frontend` : L'application web cliente (Vue.js 3, Vue Router, Vite, Marked, Highlight.js).
-*   `/backend` : L'API serveur (Node.js, Express) qui lit et distribue les fichiers Markdown.
-*   `/backend/courses` : Le dossier contenant tous vos cours au format `.md`.
-
-## Comment écrire un cours ?
-
-Pour ajouter un nouveau cours, il suffit de créer un fichier `.md` dans le dossier `backend/courses/`. 
-Le fichier doit commencer par un **Front-matter** (bloc YAML) contenant les métadonnées du cours.
-
-**Exemple de structure d'un fichier cours (`mon-nouveau-cours.md`) :**
-
-```markdown
+Exemple d'entête (Front-matter) :
+```yaml
 ---
 title: "Mon Nouveau Cours"
-description: "Une brève description de ce que l'on va apprendre."
 category: "Général"
-difficulty: "Débutant"
-duration: "10 min"
 order: 1
-resources:
-  - title: "Fichiers d'exercice"
-    url: "/downloads/exo.zip"
 ---
-
-Ici commence votre cours en Markdown normal.
-
-## 1. Mon premier titre
-
-Voici un exemple de code :
-
-\`\`\`javascript
-const message = "La coloration syntaxique est automatique !";
-console.log(message);
-\`\`\`
-
-> [!TIP]
-> Ceci est un encadré d'astuce qui sera formaté automatiquement en vert sur le site.
 ```
 
-### Types d'encadrés disponibles :
-*   `> [!NOTE]` (Bleu) - Pour des informations générales.
-*   `> [!TIP]` (Vert) - Pour des astuces ou conseils.
-*   `> [!WARNING]` (Orange) - Pour des mises en garde.
-*   `> [!IMPORTANT]` (Rouge) - Pour des notions cruciales à retenir.
+## Installation locale
 
-## Installation et Lancement
+1. Installer les dépendances :
+   ```bash
+   npm install
+   ```
 
-### Prérequis
-*   [Node.js](https://nodejs.org/) installé sur votre machine.
+2. Lancer le serveur de développement :
+   ```bash
+   npm run dev
+   ```
+   Le site sera accessible sur `http://localhost:5173`.
 
-### 1. Démarrer le Backend
-Ouvrez un terminal et naviguez dans le dossier `backend/` :
+## Déploiement
+
+Pour générer le site statique prêt à être déployé :
 ```bash
-cd backend
-npm install
-npm start
+npm run build
 ```
-Le serveur backend sera lancé sur `http://localhost:3000`.
-
-### 2. Démarrer le Frontend
-Ouvrez un second terminal et naviguez dans le dossier `frontend/` :
-```bash
-cd frontend
-npm install
-npm run dev
-```
-L'interface web sera disponible à l'adresse indiquée par Vite (généralement `http://localhost:5173`).
-
----
-
-**Construit avec soin pour un apprentissage moderne et fluide.**
+Les fichiers générés se trouveront dans `docs/.vitepress/dist`.
