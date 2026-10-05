@@ -96,9 +96,9 @@ export default defineConfig({
     // Description longue pour moteurs
     ['meta', { name: 'description', content: 'MachLearn : cours gratuits et open-source sur l\'intelligence artificielle, le machine learning, le deep learning, PyTorch, Transformers, n8n, MLOps, Docker et FastAPI. Apprenez from scratch avec des modules rigoureux et pratiques.' }],
     ['meta', { name: 'abstract', content: 'Plateforme d\'apprentissage gratuite sur l\'IA, le ML et l\'automatisation logicielle.' }],
-    ['meta', { name: 'category', content: 'Education, Intelligence Artificielle, Technologie' }],
+    ['meta', { name: 'category', content: 'Education, machideau, lefaure, samie, Intelligence Artificielle, Technologie' }],
     ['meta', { name: 'classification', content: 'Education' }],
-    ['meta', { name: 'subject', content: 'Intelligence Artificielle, Machine Learning, Deep Learning, Automatisation' }],
+    ['meta', { name: 'subject', content: 'Intelligence Artificielle, machideau, lefaure samie, Machine Learning, Deep Learning, Automatisation' }],
     ['meta', { name: 'coverage', content: 'Worldwide' }],
     ['meta', { name: 'distribution', content: 'Global' }],
     ['meta', { name: 'rating', content: 'General' }],
@@ -124,7 +124,7 @@ export default defineConfig({
       "name": "MachLearn",
       "url": "https://machlearn.vercel.app",
       "logo": "https://machlearn.vercel.app/logo.png",
-      "description": "Cours gratuits sur l'intelligence artificielle, le machine learning, le deep learning et l'automatisation.",
+      "description": "Cours gratuits sur l'intelligence artificielle, le machine learning, le deep learning et l'automatisation, platforme machideau, lefaure samie",
       "sameAs": ["https://github.com/machideau/cours_web"],
       "knowsAbout": [
         "Intelligence Artificielle", "Machine Learning", "Deep Learning",
