@@ -280,4 +280,29 @@ const toggleFocusMode = () => {
   color: var(--vp-c-text-2);
   font-size: 0.95rem;
 }
+
+@media (max-width: 640px) {
+  .course-top-toolbar {
+    padding: 10px 14px;
+    margin-bottom: 1.5rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .toolbar-left, .toolbar-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .btn-complete, .btn-quiz-open, .btn-tool {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+  }
+  .nav-dash-text {
+    display: none;
+  }
+  .nav-dash-btn {
+    padding: 4px 8px;
+    margin-left: 6px;
+  }
+}
 </style>

@@ -893,4 +893,120 @@ body.zen-focus-mode .VPDoc .content {
   box-shadow: 0 28px 64px rgba(217, 119, 87, 0.26);
 }
 
+/* ==========================================================================
+   GLOBAL RESPONSIVE DESIGN & MOBILE OPTIMIZATIONS
+   ========================================================================== */
+
+/* Markdown tables responsive horizontal scroll */
+.vp-doc table {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0 !important;
+}
+
+/* Code blocks responsive handling */
+.vp-doc div[class*="language-"] {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  border-radius: 12px !important;
+}
+
+/* Breakpoint: Tablets & Small Screens (<= 768px) */
+@media (max-width: 768px) {
+  .VPNavBarTitle .logo {
+    height: 38px !important;
+    max-height: 38px !important;
+  }
+
+  .VPHero {
+    padding: 56px 16px 44px !important;
+    margin-bottom: 32px !important;
+  }
+
+  .VPHero .name {
+    font-size: 2.2rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .VPHero .text {
+    font-size: 1.6rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .VPHero .tagline {
+    font-size: 1rem !important;
+  }
+
+  .VPHero .image-src {
+    max-width: 180px !important;
+    max-height: 180px !important;
+  }
+
+  .home-section-container {
+    padding: 0 16px !important;
+    margin-bottom: 48px !important;
+  }
+
+  .home-section-title {
+    font-size: 1.6rem !important;
+  }
+
+  .about-manifesto {
+    padding: 28px 20px !important;
+    margin: 0 16px 64px !important;
+    border-radius: 16px !important;
+  }
+
+  .about-manifesto-quote {
+    font-size: 1.25rem !important;
+    line-height: 1.45 !important;
+  }
+}
+
+/* Breakpoint: Mobile Phones (<= 640px) */
+@media (max-width: 640px) {
+  .academy-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .academy-card-thumb {
+    height: 110px !important;
+  }
+
+  .academy-card-body {
+    padding: 16px !important;
+  }
+
+  .academy-card-title {
+    font-size: 1.05rem !important;
+  }
+
+  .academy-card-desc {
+    font-size: 0.88rem !important;
+  }
+
+  .about-manifesto-author {
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .about-avatar {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .about-author-name {
+    font-size: 0.9rem !important;
+  }
+
+  .about-author-desc {
+    font-size: 0.78rem !important;
+  }
+}
+
+
 

@@ -360,6 +360,8 @@ const clearAllProgress = () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .privacy-note {
@@ -377,5 +379,36 @@ const clearAllProgress = () => {
   color: #CF1322;
   cursor: pointer;
   text-decoration: underline;
+  padding: 0;
+}
+
+@media (max-width: 640px) {
+  .dash-modal-backdrop {
+    padding: 12px;
+  }
+  .dash-modal {
+    border-radius: 16px;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .dash-header {
+    padding: 18px 20px 14px;
+  }
+  .dash-title {
+    font-size: 1.25rem !important;
+  }
+  .dash-body {
+    padding: 18px 20px;
+    overflow-y: auto;
+  }
+  .progress-big-number {
+    font-size: 2.2rem !important;
+  }
+  .dash-footer {
+    padding: 14px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 </style>

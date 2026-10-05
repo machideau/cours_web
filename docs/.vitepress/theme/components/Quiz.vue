@@ -621,4 +621,61 @@ const submitQuiz = () => {
   transform: translateY(16px) scale(0.97);
   opacity: 0;
 }
+
+@media (max-width: 640px) {
+  .quiz-modal-overlay {
+    padding: 10px;
+  }
+  .quiz-modal {
+    max-height: 94vh;
+    border-radius: 16px;
+  }
+  .quiz-modal-header {
+    padding: 16px 18px 14px;
+  }
+  .quiz-modal-title {
+    font-size: 1.1rem !important;
+  }
+  .quiz-modal-body {
+    padding: 16px 18px;
+  }
+  .question-title {
+    font-size: 0.94rem;
+  }
+  .quiz-option {
+    padding: 9px 12px;
+    font-size: 0.88rem;
+    gap: 10px;
+  }
+  .opt-bullet {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+  .quiz-modal-footer {
+    padding: 14px 18px;
+  }
+  .quiz-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 8px;
+  }
+  .quiz-actions .btn-quiz {
+    width: 100%;
+    text-align: center;
+  }
+  .quiz-results {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  .result-actions {
+    width: 100%;
+  }
+  .result-actions .btn-quiz {
+    flex: 1;
+    text-align: center;
+  }
+}
 </style>

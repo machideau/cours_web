@@ -524,4 +524,37 @@ const filteredCourses = computed(() => {
   font-weight: 600;
   cursor: pointer;
 }
+
+@media (max-width: 640px) {
+  .explorer-header {
+    margin-bottom: 24px;
+  }
+  .explorer-title {
+    font-size: 1.6rem !important;
+  }
+  .explorer-desc {
+    font-size: 0.92rem;
+  }
+  .search-box {
+    margin-bottom: 16px;
+  }
+  .search-input {
+    padding: 10px 14px 10px 40px;
+    font-size: 0.9rem;
+  }
+  .filter-pills {
+    gap: 6px;
+  }
+  .filter-pill {
+    padding: 6px 10px;
+    font-size: 0.78rem;
+    gap: 6px;
+  }
+  .results-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: 0.8rem;
+  }
+}
 </style>
