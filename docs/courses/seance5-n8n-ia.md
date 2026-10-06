@@ -250,3 +250,15 @@ Resume ce texte en exactement 3 points cles, sous forme de liste a puces courtes
 - La différence entre un appel simple au modèle et un AI Agent capable d'utiliser des outils
 - Les quatre grands usages pratiques : génération de texte, classification, extraction d'informations, résumé
 - L'importance de garder un contrôle (IF, validation) après chaque sortie IA, car le modèle peut se tromper ou mal formater sa réponse
+
+---
+
+<script setup>
+import { seance5Quiz } from "../.vitepress/theme/data/n8n-quizzes.js"
+</script>
+
+<Quiz
+  title="Quiz de validation - Séance 5 : Introduire l'IA dans n8n"
+  :count="20"
+  :questions="seance5Quiz"
+/>

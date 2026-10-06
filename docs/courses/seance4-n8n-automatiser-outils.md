@@ -346,3 +346,15 @@ Chaque participant adapte ce squelette à son propre cas d'usage.
 - WhatsApp Business Cloud exige une configuration plus lourde que Telegram, avec la contrainte stricte de la fenêtre des 24h et des templates approuvés
 - Google Forms n'a pas de trigger natif : passer par Google Sheets (simple) ou Apps Script + Webhook (temps réel)
 - L'étape souvent oubliée par les débutants : l'autorisation ou la connexion explicite entre le service et l'intégration (partage du document, connexion de la base Notion, activation de l'API)
+
+---
+
+<script setup>
+import { seance4Quiz } from "../.vitepress/theme/data/n8n-quizzes.js"
+</script>
+
+<Quiz
+  title="Quiz de validation - Séance 4 : Automatiser les outils du quotidien"
+  :count="20"
+  :questions="seance4Quiz"
+/>

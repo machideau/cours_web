@@ -194,3 +194,15 @@ Envoie successivement ces messages à ton bot et observe le comportement à chaq
 - Contraindre les choix possibles du modèle (lui donner une liste fermée plutôt que de le laisser extraire librement) améliore fortement la fiabilité de l'extraction
 - Combiner plusieurs appels IA successifs, chacun avec un rôle précis et limité, donne un résultat plus robuste qu'un seul gros prompt qui essaierait de tout faire en même temps
 - Enregistrer chaque échange permet de garder une trace exploitable pour améliorer le système plus tard, ou pour qu'un humain reprenne la conversation en cas de besoin
+
+---
+
+<script setup>
+import { seance6Quiz } from "../.vitepress/theme/data/n8n-quizzes.js"
+</script>
+
+<Quiz
+  title="Quiz de validation - Séance 6 : Automatisation IA avancée"
+  :count="20"
+  :questions="seance6Quiz"
+/>
