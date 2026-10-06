@@ -68,7 +68,7 @@
 
   <div class="about-manifesto">
     <div class="about-manifesto-quote">
-      « Pas de formation payante, pas de certificat commercial à vendre — juste des ressources utiles, accessibles à tous et rédigées avec soin pour ceux qui souhaitent réellement apprendre. »
+      « Pas de formation payante, pas de certificat commercial à vendre - juste des ressources utiles, accessibles à tous et rédigées avec soin pour ceux qui souhaitent réellement apprendre. »
     </div>
     <div class="about-manifesto-author">
       <div class="about-avatar">

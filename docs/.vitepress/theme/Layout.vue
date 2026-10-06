@@ -3,6 +3,7 @@ import DefaultTheme from 'vitepress/theme'
 import { useRoute } from 'vitepress'
 import { ref, watch, onMounted, onUnmounted } from 'vue'
 import DashboardProgress from './components/DashboardProgress.vue'
+import ScrollToTop from './components/ScrollToTop.vue'
 
 const { Layout } = DefaultTheme
 const route = useRoute()
@@ -54,6 +55,13 @@ const isCompleted = () => completedCourses.value.includes(route.path)
 
 const openQuiz = () => {
   window.dispatchEvent(new CustomEvent('open-quiz-modal'))
+}
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
 }
 
 const toggleFocusMode = () => {
@@ -127,12 +135,57 @@ const toggleFocusMode = () => {
     </template>
     
     <template #doc-after>
-      <div v-if="route.path.startsWith('/courses/') && route.path !== '/courses/'" class="comments-section" :key="route.path">
+      <div v-if="route.path.startsWith('/courses/') && route.path !== '/courses/'" class="course-bottom-bar" :key="route.path">
+        <div class="bottom-bar-content">
+          <div class="bottom-info">
+            <span class="bottom-title">Fin de ce cours</span>
+            <span class="bottom-subtitle">Prenez un instant pour valider vos acquis ou remonter au sommaire.</span>
+          </div>
+          
+          <div class="bottom-actions">
+            <button class="btn-bottom-action btn-scroll-top" @click="scrollToTop" title="Remonter tout en haut">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="19" x2="12" y2="5"></line>
+                <polyline points="5 12 12 5 19 12"></polyline>
+              </svg>
+              <span>Haut de page</span>
+            </button>
+
+            <button
+              v-if="isCompleted() && hasQuiz"
+              class="btn-bottom-action btn-quiz-highlight"
+              @click="openQuiz"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              <span>Passer le Quiz</span>
+            </button>
+
+            <button class="btn-complete" @click="toggleCompletion" :class="{ 'completed': isCompleted() }">
+              <svg v-if="isCompleted()" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <svg v-else width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+              <span>{{ isCompleted() ? 'Cours validé' : 'Valider ce cours' }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="route.path.startsWith('/courses/') && route.path !== '/courses/'" class="comments-section" :key="'comments-' + route.path">
         <h3>Commentaires & Questions</h3>
         <p><em>Posez vos questions ou partagez vos remarques sur ce cours.</em></p>
       </div>
     </template>
   </Layout>
+
+  <!-- Bouton flottant de retour en haut -->
+  <ScrollToTop />
 
   <!-- Modal Dashboard des statistiques -->
   <DashboardProgress :isOpen="showDashboard" @close="showDashboard = false" />
@@ -263,8 +316,89 @@ const toggleFocusMode = () => {
   border-color: var(--vp-c-brand-1);
 }
 
+.course-bottom-bar {
+  margin-top: 3.5rem;
+  margin-bottom: 2rem;
+  padding: 20px 24px;
+  background: var(--vp-c-bg-elv);
+  border: 1px solid var(--vp-c-border);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.bottom-bar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.bottom-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bottom-title {
+  font-family: var(--vp-font-family-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+}
+
+.bottom-subtitle {
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+}
+
+.bottom-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-bottom-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--vp-c-border);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-bottom-action:hover {
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  transform: translateY(-1px);
+}
+
+.btn-scroll-top {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+}
+
+.btn-scroll-top:hover {
+  background: var(--vp-c-brand-1);
+  color: #ffffff;
+}
+
+.btn-quiz-highlight {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+
 .comments-section {
-  margin-top: 4rem;
+  margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--vp-c-divider);
 }
@@ -282,6 +416,21 @@ const toggleFocusMode = () => {
 }
 
 @media (max-width: 640px) {
+  .course-bottom-bar {
+    padding: 16px;
+  }
+  .bottom-bar-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .bottom-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+  .bottom-actions button {
+    flex: 1;
+    justify-content: center;
+  }
   .course-top-toolbar {
     padding: 10px 14px;
     margin-bottom: 1.5rem;

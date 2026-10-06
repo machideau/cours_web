@@ -456,3 +456,66 @@ export const seance3Quiz = [
     explanation: "curl est l'outil en ligne de commande universel pour tester, inspecter et envoyer des requêtes HTTP vers des APIs."
   }
 ]
+
+export const seance4Quiz = [
+  {
+    question: "Quelle approche n8n privilégie-t-il pour s'authentifier à des services de messagerie comme Gmail ?",
+    options: ["Un simple mot de passe", "L'utilisation de clés API basiques", "L'authentification OAuth2", "L'adresse IP du serveur"],
+    answer: 2,
+    explanation: "OAuth2 est le standard sécurisé qui permet d'autoriser n8n à agir au nom d'un compte sans stocker le mot de passe."
+  },
+  {
+    question: "Pour ajouter de nouvelles données dans une feuille de calcul, quelle opération du node Google Sheets faut-il choisir ?",
+    options: ["Update Row", "Append Row", "Get Row(s)", "Delete Row"],
+    answer: 1,
+    explanation: "Append Row ajoute une nouvelle ligne à la fin du tableau avec les données fournies."
+  },
+  {
+    question: "Avec quel outil officiel crée-t-on un bot sur Telegram ?",
+    options: ["Telegram Bot Manager", "BotFather", "Le Node Telegram", "Le site web de Telegram"],
+    answer: 1,
+    explanation: "BotFather est le bot officiel de Telegram permettant de créer de nouveaux bots et de récupérer leurs tokens d'API."
+  }
+];
+
+export const seance5Quiz = [
+  {
+    question: "Pourquoi est-il crucial de demander au modèle IA de répondre 'uniquement avec un JSON' ?",
+    options: ["Parce que le LLM ne parle pas français", "Parce que la sortie par défaut d'un LLM est du texte brut, et du texte autour du JSON ferait échouer l'analyse", "Pour accélérer le temps de réponse", "Parce que n8n n'accepte que le JSON"],
+    answer: 1,
+    explanation: "Si le modèle ajoute 'Voici la réponse :' avant le JSON, la fonction JSON.parse() renverra une erreur. La sortie doit être strictement du JSON."
+  },
+  {
+    question: "Quelle méthode est utilisée pour transformer le texte renvoyé par l'IA en un objet exploitable ?",
+    options: ["JSON.stringify()", "JSON.parse()", "Une requête HTTP GET", "Un node Switch"],
+    answer: 1,
+    explanation: "JSON.parse() convertit la chaîne de caractères brute au format JSON en un véritable objet JavaScript manipulable par n8n."
+  },
+  {
+    question: "Est-il possible d'utiliser un node Switch après une classification par une IA ?",
+    options: ["Non, le node Switch ne comprend pas l'IA", "Oui, l'IA génère une catégorie (ex: 'commande') qui peut être évaluée classiquement par le Switch", "Seulement si l'IA utilise un modèle GPT-4", "Oui, mais cela demande de coder en Python"],
+    answer: 1,
+    explanation: "C'est l'essence même de l'hybridation : l'IA classifie (produit une donnée structurée), et le Switch route le flux selon cette donnée, sans rien changer à sa logique."
+  }
+];
+
+export const seance6Quiz = [
+  {
+    question: "Pourquoi est-il conseillé de vérifier le stock dans une base de données plutôt que de demander le prix à l'IA ?",
+    options: ["L'IA est trop lente", "L'IA a tendance à 'halluciner' (inventer) des informations factuelles non présentes dans son prompt", "Cela coûte plus cher en API", "Google Sheets est plus moderne que l'IA"],
+    answer: 1,
+    explanation: "Un LLM ne 'connaît' pas votre base de données. Pour une information exacte comme un prix ou un stock, il faut consulter la source de vérité (Google Sheets) et fournir l'information à l'IA."
+  },
+  {
+    question: "Comment améliorer la fiabilité d'un LLM lors de l'extraction d'une entité (ex: un nom de produit) ?",
+    options: ["Le menacer de s'éteindre s'il se trompe", "Lui fournir une liste fermée de choix précis dans le prompt", "Lui demander de chercher sur Google", "Lui parler en anglais obligatoirement"],
+    answer: 1,
+    explanation: "Fournir une liste explicite (ex: 'Choisis parmi Produit A, Produit B') contraint le modèle et réduit fortement les erreurs d'extraction par rapport à une demande ouverte."
+  },
+  {
+    question: "Quel node utiliser pour suspendre l'exécution du workflow et attendre une validation humaine ?",
+    options: ["Wait Node classique", "Node de messagerie avec l'opération 'Send and Wait for Response'", "Switch Node", "Stop and Go Node"],
+    answer: 1,
+    explanation: "L'opération 'Send and Wait for Response' (disponible par ex. sur Gmail) permet d'envoyer un message contenant des liens d'action (Approuver/Rejeter) qui relanceront le workflow une fois cliqués."
+  }
+];
